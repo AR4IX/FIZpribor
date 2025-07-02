@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+void compareIntegers(int num1, int num2) {
+  if (num1 > num2) {
+    printf("%d больше %d\n", num1, num2);
+  } else if (num1 < num2) {
+    printf("%d меньше %d\n", num1, num2);
+  } else {
+    printf("%d равно %d\n", num1, num2);
+  }
+}
+
 void main (void) {
 
     char ch;
@@ -25,7 +35,10 @@ void main (void) {
 
     double dd;
     printf("Размер dd: %zu байт\n", sizeof(dd));
-    
+
     long double ld;
     printf("Размер ld: %zu байт\n", sizeof(ld));
+
+    compareIntegers(sizeof(integer), sizeof(uni));
+    compareIntegers(sizeof(l), sizeof(unl));    
 }
