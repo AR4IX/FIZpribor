@@ -62,5 +62,36 @@ int main() {
         printf("dec(%lf), hex(%la)\n", double_array[i], double_array[i]);
     }
 
-    return 0;
+    printf("Адрес char_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)char_array, sizeof(char_array), sizeof(char_array[0]), &char_array[7]-&char_array[0]);
+    
+    printf("Адрес uchar_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)uchar_array, sizeof(uchar_array), sizeof(uchar_array[0]), &uchar_array[7]-&uchar_array[0]);
+    
+    printf("Адрес short_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)short_array, sizeof(short_array), sizeof(short_array[0]), &short_array[7]-&short_array[0]);
+    
+    printf("Адрес ushort_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)ushort_array, sizeof(ushort_array), sizeof(ushort_array[0]), &ushort_array[7]-&ushort_array[0]);
+    
+    printf("Адрес int_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)int_array, sizeof(int_array), sizeof(int_array[0]), &int_array[7]-&int_array[0]);
+    
+    printf("Адрес uint_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)uint_array, sizeof(uint_array), sizeof(uint_array[0]), &uint_array[7]-&uint_array[0]);
+    
+    printf("Адрес long_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)long_array, sizeof(long_array), sizeof(long_array[0]), &long_array[7]-&long_array[0]);
+    
+    printf("Адрес ulong_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)ulong_array, sizeof(ulong_array), sizeof(ulong_array[0]), &ulong_array[7]-&ulong_array[0]);
+    
+    printf("Адрес float_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)float_array, sizeof(float_array), sizeof(float_array[0]), &float_array[7]-&float_array[0]);
+    
+    printf("Адрес double_array: %p Размер массива = %zu Размер 1-го элемента = %zu Дельта между элементами = %ld\n",
+        (void*)double_array, sizeof(double_array), sizeof(double_array[0]), &double_array[7]-&double_array[0]);
+    
+    
+    
 }
