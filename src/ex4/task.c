@@ -78,7 +78,7 @@ void main (void) {
     for (int i = 0; i < (sizeof(U2.lint)/sizeof(long int)); i++) printf("Значение %d-го элемента массива lint = %ld\n", i, U2.lint[i]);
 
     printf("Адрес поля llint = %p, размер = %zu\n", &U2.llint, sizeof(U2.llint));
-    for (int i = 0; i < (sizeof(U2.lint)/sizeof(long long)); i++) printf("Значение %d-го элемента массива llint = %lld\n", i, U2.llint[i]);
+    for (int i = 0; i < (sizeof(U2.llint)/sizeof(long long)); i++) printf("Значение %d-го элемента массива llint = %lld\n", i, U2.llint[i]);
 
     printf("Адрес поля ch = %p, размер = %zu\n", &U2.ch, sizeof(U2.ch));
     for (int i = 0; i < (sizeof(U2.ch)/sizeof(char)); i++) printf("Значение %d-го элемента массива ch = %c\n", i, U2.ch[i]);
@@ -87,7 +87,7 @@ void main (void) {
     for (int i = 0; i < (sizeof(U2.fl)/sizeof(float)); i++) printf("Значение %d-го элемента массива fl = %f\n", i, U2.fl[i]);
 
     printf("Адрес поля dd = %p, размер = %zu\n", &U2.dd, sizeof(U2.dd));
-    for (int i = 0; i < (sizeof(U2.fl)/sizeof(float)); i++) printf("Значение %d-го элемента массива dd = %f\n", i, U2.dd[i]);
+    for (int i = 0; i < (sizeof(U2.dd)/sizeof(float)); i++) printf("Значение %d-го элемента массива dd = %f\n", i, U2.dd[i]);
 
     printf("Адрес поля ld = %p, значение = %Lf, размер = %zu\n\n", &U.ld, U.ld, sizeof(U.ld));
 }

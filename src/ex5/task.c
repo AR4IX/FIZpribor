@@ -1,82 +1,78 @@
 #include <stdio.h>
-#include <limits.h>
-#include <float.h>
+#include "c.h"
 
-void compareIntegers(int num1, int num2, int num3) {
-    if (num1 > num2 && num1 > num3) {
-        printf("%d - наибольшее число\n", num1);
-    } else if (num2 > num1 && num2 > num3) {
-        printf("%d - наибольшее число\n", num2);
-    } else if (num3 > num1 && num3 > num2) {
-        printf("%d - наибольшее число\n", num3);
-    } else {
-        printf("Есть одинаковые наибольшие числа.\n");
-    }
+struct myStruct {
+    unsigned int uni;
+    short int shi;
+    int integer;
+    long int lint;
+    long long llint;
+    char ch;
+    float fl;
+    double dd;
+    long double ld;
+};
 
-    if (num1 < num2 && num1 < num3) {
-        printf("%d - наименьшее число\n", num1);
-    } else if (num2 < num1 && num2 < num3) {
-        printf("%d - наименьшее число\n", num2);
-    } else if (num3 < num1 && num3 < num2) {
-        printf("%d - наименьшее число\n", num3);
-    } else {
-        printf("Есть одинаковые наименьшие числа.\n");
-    }
-}
+union myUnion {
+    unsigned int uni;
+    short int shi;
+    int integer;
+    long int lint;
+    long long llint;
+    char ch;
+    float fl;
+    double dd;
+    long double ld;
+};
 
+union newUnion {
+    unsigned int uni[sizeof(long double)/sizeof(unsigned int)];
+    short int shi[sizeof(long double)/sizeof(short int)];
+    int integer[sizeof(long double)/sizeof(int)];
+    long int lint[sizeof(long double)/sizeof(long int)];
+    long long llint[sizeof(long double)/sizeof(long long)];
+    char ch[sizeof(long double)/sizeof(char)];
+    float fl[sizeof(long double)/sizeof(float)];
+    double dd[sizeof(long double)/sizeof(double)];
+    long double ld;
+};
 
 void main (void) {
 
-    char ch;
-    unsigned char unch;
-    printf("Размер ch: %zu байт\n", sizeof(ch));
-    printf("Размер unch: %zu байт\n", sizeof(unch));
+    struct myStruct S = {10215, -11, 4, -500305, 12344030403, 'A', 3.14f, 3.2132, 124.140000045};
+    printf("Размер структуры: %zu\nРазмер переменной: %zu\nАдрес переменной: %p\n", sizeof(struct myStruct), sizeof(S), &S);
+    printf("Адрес поля uni = %p, значение = %u\n", &S.uni, S.uni);
+    printf("Адрес поля shi = %p,  начение = %hd\n", &S.shi, S.shi);
+    printf("Адрес поля integer = %p, значение = %d\n", &S.integer, S.integer);
+    printf("Адрес поля lint = %p, значение = %ld\n", &S.lint, S.lint);
+    printf("Адрес поля llint = %p, начение = %lld\n", &S.llint, S.llint);
+    printf("Адрес поля ch = %p, значение = %c\n", &S.ch, S.ch);
+    printf("Адрес поля fl = %p, значение = %f\n", &S.fl, S.fl);
+    printf("Адрес поля dd = %p, значение = %lf\n", &S.dd, S.dd);
+    printf("Адрес поля ld = %p, значение = %Lf\n\n", &S.ld, S.ld);
 
-    int integer;
-    unsigned int uni;
-    const int cnsti;
-    printf("Размер integer: %zu байт\n", sizeof(integer));
-    printf("Размер uni: %zu байт\n", sizeof(uni));
-    printf("Размер cnsti: %zu байт\n", sizeof(cnsti));
+    union myUnion U = {14};
+    printf("Размер объединения: %zu\nРазмер переменной: %zu\nАдрес переменной: %p\n", sizeof(union myUnion), sizeof(U), &U);
+    printf("Адрес поля uni = %p, значение = %u, размер = %zu\n", &U.uni, U.uni, sizeof(U.uni));
+    printf("Адрес поля shi = %p, значение = %hd, размер = %zu\n", &U.shi, U.shi, sizeof(U.shi));
+    printf("Адрес поля integer = %p, значение = %d, размер = %zu\n", &U.integer, U.integer, sizeof(U.integer));
+    printf("Адрес поля lint = %p, значение = %ld, размер = %zu\n", &U.lint, U.lint, sizeof(U.lint));
+    printf("Адрес поля llint = %p, значение = %lld, размер = %zu\n", &U.llint, U.llint, sizeof(U.llint));
+    printf("Адрес поля ch = %p, значение = %c, размер = %zu\n", &U.ch, U.ch, sizeof(U.ch));
+    printf("Адрес поля fl = %p, значение = %f, размер = %zu\n", &U.fl, U.fl, sizeof(U.fl));
+    printf("Адрес поля dd = %p, значение = %lf, размер = %zu\n", &U.dd, U.dd, sizeof(U.dd));
+    printf("Адрес поля ld = %p, значение = %Lf, размер = %zu\n\n", &U.ld, U.ld, sizeof(U.ld));
 
-    short shorty;
-    printf("Размер shorty: %zu байт\n", sizeof(shorty));
-    
-    long l;
-    unsigned long unl;
-    const long cnstl;
-    printf("Размер l: %zu байт\n", sizeof(l));
-    printf("Размер unl: %zu байт\n", sizeof(unl));
-    printf("Размер cnstl: %zu байт\n", sizeof(cnstl));
+    union newUnion U2 = {14};
+    printf("Размер 2-го объединения: %zu\nРазмер переменной: %zu\nАдрес переменной: %p\n", sizeof(union newUnion), sizeof(U2), &U2);
 
-    float fl;
-    printf("Размер fl: %zu байт\n", sizeof(fl));
-
-    double dd;
-    printf("Размер dd: %zu байт\n", sizeof(dd));
-
-    long double ld;
-    printf("Размер ld: %zu байт\n", sizeof(ld));
-
-    compareIntegers(sizeof(integer), sizeof(uni), sizeof(cnsti));
-    compareIntegers(sizeof(l), sizeof(unl), sizeof(cnstl));    
-
-    
-    int minINT = INT_MIN, maxINT = INT_MAX;
-    unsigned int minUNI = 0, maxUNI = UINT_MAX;
-    char minCH = CHAR_MIN, maxCH = CHAR_MAX;
-    unsigned char minUNCH = 0, maxUNCH = UCHAR_MAX;
-
-
-    printf("Минимальное значение char: dec(%d), hex(%X)\n", minCH, minCH);
-    printf("Максимальное значение char: dec(%d), hex(%X)\n\n", maxCH, maxCH);
-
-    printf("Минимальное значение uchar: dec(%u), hex(%X)\n", minUNCH, minUNCH);
-    printf("Максимальное значение uchar: dec(%u), hex(%X)\n\n", maxUNCH, maxUNCH);
-
-    printf("Минимальное значение int: dec(%d), hex(%X)\n", minINT, minINT);
-    printf("Максимальное значение int: dec(%d), hex(%X)\n\n", maxINT, maxINT);
-
-    printf("Минимальное значение uni: dec(%u), hex(%X)\n", minUNI, minUNI);
-    printf("Максимальное значение uni: dec(%u), hex(%X)\n\n", maxUNI, maxUNI);
+    uni_func(U2.uni, sizeof(U2.uni)/sizeof(unsigned int));
+    shi_func(U2.shi, sizeof(U2.shi)/sizeof(short int));
+    integer_func(U2.integer, sizeof(U2.integer)/sizeof(int));
+    lint_func(U2.lint, sizeof(U2.lint)/sizeof(long int));
+    llint_func(U2.llint, sizeof(U2.llint)/sizeof(long long int));
+    ch_func(U2.ch, sizeof(U2.ch)/sizeof(char));
+    fl_func(U2.fl, sizeof(U2.fl)/sizeof(float));
+    dd_func(U2.dd, sizeof(U2.dd)/sizeof(double));
+    printf("Адрес поля ld = %p, значение = %Lf, размер = %zu\n\n", &U.ld, U.ld, sizeof(U.ld));
 }
