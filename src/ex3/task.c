@@ -1,82 +1,66 @@
 #include <stdio.h>
-#include <limits.h>
-#include <float.h>
 
-void compareIntegers(int num1, int num2, int num3) {
-    if (num1 > num2 && num1 > num3) {
-        printf("%d - наибольшее число\n", num1);
-    } else if (num2 > num1 && num2 > num3) {
-        printf("%d - наибольшее число\n", num2);
-    } else if (num3 > num1 && num3 > num2) {
-        printf("%d - наибольшее число\n", num3);
-    } else {
-        printf("Есть одинаковые наибольшие числа.\n");
+int main() {
+    char char_array[8] = {65, 0101, 0x42, 'D', 123, 077, 0x7F, -128};
+    unsigned char uchar_array[8] = {255, 0377, 0xFF, 150, 042, 0xAB, 123, 10};
+    short short_array[8] = {32767, 077777, 0x7FFF, -100, 01000, 0xABCD, 1500, -230};
+    unsigned short ushort_array[8] = {65535, 0177777, 0xFFFF, 1234, 0777, 0xDEAD, 314, 1000};
+    int int_array[8] = {2147483647, 017777777777, 0x7FFFFFFF, -1000000, 0100000, 0xCAFEBABE, 1500000, -23000};
+    unsigned int uint_array[8] = {4294967295, 037777777777, 0xFFFFFFFF, 123456, 0777777, 0xDEADBEEF, 314000, 1000000};
+    long long_array[8] = {2147483647L, 017777777777L, 0x7FFFFFFFL, -1000000L, 0100000L, 0xCAFEBABEL, 1500000, -23000};
+    unsigned long ulong_array[8] = {4294967295UL, 037777777777UL, 0xFFFFFFFFUL, 123456UL, 0777777UL, 0xDEADBEEFUL, 314000, 1000000};
+    float float_array[8] = {3.14159f, 123.45f, 8.5f, 3.0f, -123.456f, 0.25f, 63.875f, 42.75f};
+    double double_array[8] = {3.141592653589793, 1.2345e200, 8.5, 3.0, -123.456789, 2.5e-10, 511.875, 2748.8125};
+
+    printf("char:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%d), oct(%o), hex(%X)\n", char_array[i], char_array[i], char_array[i]);
     }
 
-    if (num1 < num2 && num1 < num3) {
-        printf("%d - наименьшее число\n", num1);
-    } else if (num2 < num1 && num2 < num3) {
-        printf("%d - наименьшее число\n", num2);
-    } else if (num3 < num1 && num3 < num2) {
-        printf("%d - наименьшее число\n", num3);
-    } else {
-        printf("Есть одинаковые наименьшие числа.\n");
+    printf("\nunsigned char:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%u), oct(%o), hex(%X)\n", uchar_array[i], uchar_array[i], uchar_array[i]);
     }
-}
 
+    printf("\nshort:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%hd), oct(%ho), hex(%hX)\n", short_array[i], short_array[i], short_array[i]);
+    }
 
-void main (void) {
+    printf("\nunsigned short:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%hu), oct(%ho), hex(%hX)\n", ushort_array[i], ushort_array[i], ushort_array[i]);
+    }
 
-    char ch;
-    unsigned char unch;
-    printf("Размер ch: %zu байт\n", sizeof(ch));
-    printf("Размер unch: %zu байт\n", sizeof(unch));
+    printf("\nint:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%d), oct(%o), hex(%X)\n", int_array[i], int_array[i], int_array[i]);
+    }
 
-    int integer;
-    unsigned int uni;
-    const int cnsti;
-    printf("Размер integer: %zu байт\n", sizeof(integer));
-    printf("Размер uni: %zu байт\n", sizeof(uni));
-    printf("Размер cnsti: %zu байт\n", sizeof(cnsti));
+    printf("\nunsigned int:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%u), oct(%o), hex(%X)\n", uint_array[i], uint_array[i], uint_array[i]);
+    }
 
-    short shorty;
-    printf("Размер shorty: %zu байт\n", sizeof(shorty));
-    
-    long l;
-    unsigned long unl;
-    const long cnstl;
-    printf("Размер l: %zu байт\n", sizeof(l));
-    printf("Размер unl: %zu байт\n", sizeof(unl));
-    printf("Размер cnstl: %zu байт\n", sizeof(cnstl));
+    printf("\nlong:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%ld), oct(%lo), hex(%lX)\n", long_array[i], long_array[i], long_array[i]);
+    }
 
-    float fl;
-    printf("Размер fl: %zu байт\n", sizeof(fl));
+    printf("\nunsigned long:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%lu), oct(%lo), hex(%lX)\n", ulong_array[i], ulong_array[i], ulong_array[i]);
+    }
 
-    double dd;
-    printf("Размер dd: %zu байт\n", sizeof(dd));
+    printf("\nfloat:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%f), hex(%a)\n", float_array[i], float_array[i]);
+    }
 
-    long double ld;
-    printf("Размер ld: %zu байт\n", sizeof(ld));
+    printf("\ndouble:\n");
+    for (int i = 0; i < 8; i++) {
+        printf("dec(%lf), hex(%la)\n", double_array[i], double_array[i]);
+    }
 
-    compareIntegers(sizeof(integer), sizeof(uni), sizeof(cnsti));
-    compareIntegers(sizeof(l), sizeof(unl), sizeof(cnstl));    
-
-    
-    int minINT = INT_MIN, maxINT = INT_MAX;
-    unsigned int minUNI = 0, maxUNI = UINT_MAX;
-    char minCH = CHAR_MIN, maxCH = CHAR_MAX;
-    unsigned char minUNCH = 0, maxUNCH = UCHAR_MAX;
-
-
-    printf("Минимальное значение char: dec(%d), hex(%X)\n", minCH, minCH);
-    printf("Максимальное значение char: dec(%d), hex(%X)\n\n", maxCH, maxCH);
-
-    printf("Минимальное значение uchar: dec(%u), hex(%X)\n", minUNCH, minUNCH);
-    printf("Максимальное значение uchar: dec(%u), hex(%X)\n\n", maxUNCH, maxUNCH);
-
-    printf("Минимальное значение int: dec(%d), hex(%X)\n", minINT, minINT);
-    printf("Максимальное значение int: dec(%d), hex(%X)\n\n", maxINT, maxINT);
-
-    printf("Минимальное значение uni: dec(%u), hex(%X)\n", minUNI, minUNI);
-    printf("Максимальное значение uni: dec(%u), hex(%X)\n\n", maxUNI, maxUNI);
+    return 0;
 }
